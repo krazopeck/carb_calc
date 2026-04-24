@@ -547,7 +547,7 @@
       <div class="slider-row">
         <div class="slider-header">
           <span class="row-label">Objectif glucides</span>
-          <span class="slider-value" id="target-value">50 g/h</span>
+          <span class="slider-value" id="target-value">60 g/h</span>
         </div>
         <input type="range" id="input-target" class="slider" min="20" max="120" step="5" value="60">
       </div>
@@ -598,17 +598,22 @@
   let state = {
     duration: 3,
     target: 60,
-    foods: [],
+    presetFoods: [],   // rechargé depuis foods.json à chaque ouverture (jamais sauvegardé)
+    customFoods: [],   // aliments ajoutés par l'utilisateur (sauvegardés)
     bag: {},
     editMode: false
   };
+
+  // Liste fusionnée pour l'affichage et les calculs
+  function allFoods() {
+    return state.presetFoods.concat(state.customFoods);
+  }
 
   async function loadDefaultFoods() {
     try {
       const res = await fetch(FOODS_URL);
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const list = await res.json();
-      // Chaque entrée du JSON est marquée comme preset (non supprimable)
       return list.map(f => ({ ...f, preset: true }));
     } catch (err) {
       console.warn('Impossible de charger ' + FOODS_URL + ' :', err);
