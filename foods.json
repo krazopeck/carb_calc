@@ -3,11 +3,10 @@
   { "id": "gel",        "name": "Gel énergétique",      "sugar": 25 },
   { "id": "banane",     "name": "Banane",               "sugar": 20 },
   { "id": "barre",      "name": "Barre de céréales",    "sugar": 18 },
-  { "id": "patefruits", "name": "Pâte de fruits",       "sugar": 25 },
+  { "id": "patefruits", "name": "Pâte de fruits",       "sugar": 32 },
   { "id": "gateau",     "name": "Gâteau sport",         "sugar": 10 },
   { "id": "gateau2",     "name": "Gâteau sport",         "sugar": 10 },
   { "id": "bready",     "name": "Nutella B-ready",         "sugar": 10 },
-  { "id": "iso",        "name": "Boisson sucrée (500 ml)", "sugar": 30 },
   { "id": "compote",    "name": "Compote (gourde)",     "sugar": 46 },
   { "id": "maison1",    "name": "Compote maison banane",     "sugar": 30 },
   { "id": "maison2",    "name": "Compote maison patate",     "sugar": 20 }
