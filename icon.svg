@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF9500"/>
+      <stop offset="100%" stop-color="#FF3B30"/>
+    </linearGradient>
+  </defs>
+  <!-- iOS squircle background -->
+  <rect x="0" y="0" width="512" height="512" rx="112" ry="112" fill="url(#bg)"/>
+  <!-- Simple bolt / energy mark -->
+  <path d="M 290 110 L 160 280 L 245 280 L 220 402 L 350 232 L 265 232 Z"
+        fill="white"
+        stroke="white"
+        stroke-width="8"
+        stroke-linejoin="round"/>
+</svg>
