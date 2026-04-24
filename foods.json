@@ -3,7 +3,7 @@
   { "id": "gel",        "name": "Gel énergétique",      "sugar": 25 },
   { "id": "banane",     "name": "Banane",               "sugar": 20 },
   { "id": "barre",      "name": "Barre de céréales",    "sugar": 18 },
-  { "id": "patefruits", "name": "Pâte de fruits",       "sugar": 32 },
+  { "id": "patefruits", "name": "Pâte de fruits (x3)",       "sugar": 32 },
   { "id": "gateau",     "name": "Gâteau sport",         "sugar": 10 },
   { "id": "gateau2",     "name": "Gâteau sport",         "sugar": 10 },
   { "id": "bready",     "name": "Nutella B-ready",         "sugar": 10 },
