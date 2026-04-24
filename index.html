@@ -589,14 +589,15 @@
 <script>
   // --- Aliments par défaut (valeurs indicatives de glucides) ---
   const DEFAULT_FOODS = [
+    { id: 'iso',        name: 'Boisson sucrée (500 ml)', sugar: 30, preset: true },
     { id: 'gel',        name: 'Gel énergétique',     sugar: 25, preset: true },
     { id: 'banane',     name: 'Banane',              sugar: 20, preset: true },
     { id: 'barre',      name: 'Barre de céréales',   sugar: 18, preset: true },
-    { id: 'patefruits', name: 'Pâte de fruits',      sugar: 25, preset: true },
+    { id: 'patefruits', name: 'Pâte de fruits (x3)',      sugar: 25, preset: true },
     { id: 'gateau',     name: 'Gâteau sport',        sugar: 10, preset: true },
-    { id: 'iso',        name: 'Boisson iso (500 ml)', sugar: 30, preset: true },
+    { id: 'gateau2',     name: 'Gâteau sport',        sugar: 10, preset: true },
+    { id: 'Bready',     name: 'Nutella B-ready',        sugar: 10, preset: true },
     { id: 'compote',    name: 'Compote (gourde)',    sugar: 15, preset: true },
-    { id: 'datte',      name: 'Datte',               sugar: 6,  preset: true },
   ];
 
   const STORAGE_KEY = 'nutrition-course-v1';
