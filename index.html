@@ -591,28 +591,30 @@
 </div>
 
 <script>
-  // --- Aliments par défaut (valeurs indicatives de glucides) ---
-const DEFAULT_FOODS = [
-    { id: 'iso',        name: 'Boisson sucrée (500 ml)', sugar: 30, preset: true },
-    { id: 'gel',        name: 'Gel énergétique',     sugar: 25, preset: true },
-    { id: 'banane',     name: 'Banane',              sugar: 20, preset: true },
-    { id: 'barre',      name: 'Barre de céréales',   sugar: 18, preset: true },
-    { id: 'patefruits', name: 'Pâte de fruits (x3)',      sugar: 25, preset: true },
-    { id: 'gateau',     name: 'Gâteau sport',        sugar: 10, preset: true },
-    { id: 'gateau2',     name: 'Gâteau sport',        sugar: 10, preset: true },
-    { id: 'Bready',     name: 'Nutella B-ready',        sugar: 10, preset: true },
-    { id: 'compote',    name: 'Compote (gourde)',    sugar: 15, preset: true },
-  ];
-
+  // --- État et chargement des aliments par défaut ---
   const STORAGE_KEY = 'nutrition-course-v1';
+  const FOODS_URL = 'foods.json';
 
   let state = {
     duration: 3,
     target: 60,
-    foods: JSON.parse(JSON.stringify(DEFAULT_FOODS)),
+    foods: [],
     bag: {},
     editMode: false
   };
+
+  async function loadDefaultFoods() {
+    try {
+      const res = await fetch(FOODS_URL);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const list = await res.json();
+      // Chaque entrée du JSON est marquée comme preset (non supprimable)
+      return list.map(f => ({ ...f, preset: true }));
+    } catch (err) {
+      console.warn('Impossible de charger ' + FOODS_URL + ' :', err);
+      return [];
+    }
+  }
 
   function save() {
     try {
@@ -793,7 +795,10 @@ const DEFAULT_FOODS = [
   }
 
   // --- Init ---
-  function init() {
+  async function init() {
+    // 1. Charger les aliments par défaut depuis le JSON
+    state.foods = await loadDefaultFoods();
+    // 2. Charger l'état sauvegardé (qui écrase éventuellement state.foods)
     load();
 
     const durationSlider = document.getElementById('input-duration');
