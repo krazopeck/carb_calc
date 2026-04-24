@@ -210,23 +210,31 @@ font-variant-numeric: tabular-nums;
 font-weight: 500;
 letter-spacing: -0.43px;
 }
-.slider {
--webkit-appearance: none;
-appearance: none;
-width: 100%;
-height: 4px;
-border-radius: 2px;
-outline: none;
-cursor: pointer;
-margin: 4px 0;
-background: linear-gradient(
-to right,
-var(–ios-blue) 0%,
-var(–ios-blue) var(–fill, 0%),
-var(–fill-tertiary) var(–fill, 0%),
-var(–fill-tertiary) 100%
-);
-}
+  .slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    margin: 4px 0;
+    background-color: var(--fill-tertiary);
+    background-image: linear-gradient(
+      to right,
+      var(--ios-blue) 0%,
+      var(--ios-blue) var(--fill, 0%),
+      transparent var(--fill, 0%),
+      transparent 100%
+    );
+    background-repeat: no-repeat;
+  }
+  .slider::-webkit-slider-runnable-track {
+    height: 4px;
+    background: transparent;
+    border-radius: 2px;
+  }
 .slider::-webkit-slider-thumb {
 -webkit-appearance: none;
 appearance: none;
