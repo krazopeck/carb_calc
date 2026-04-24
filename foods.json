@@ -1,11 +1,14 @@
 [
   { "id": "iso",        "name": "Boisson sucrée (500 ml)", "carbs": 30, "category": "liquid" },
   { "id": "iso2",       "name": "Boisson sucrée bis",      "carbs": 30, "category": "liquid" },
-  { "id": "gel",        "name": "Gel énergétique",         "carbs": 25, "category": "gel" },
+  { "id": "gelo",        "name": "Gel overstim",           "carbs": 26, "category": "gel" },
+  { "id": "gele",        "name": "Gel energetico",         "carbs": 56, "category": "gel" },
   { "id": "compote",    "name": "Compote (gourde)",        "carbs": 46, "category": "gel" },
-  { "id": "gateau",     "name": "Gâteau sport",            "carbs": 30, "category": "cake" },
-  { "id": "gateau2",    "name": "Gâteau sport 2",          "carbs": 30, "category": "cake" },
-  { "id": "barre",      "name": "Barre de céréales",       "carbs": 18, "category": "cake" },
+  { "id": "gateau",     "name": "Gâteau stmichel",         "carbs": 11, "category": "cake" },
+  { "id": "gateau2",    "name": "Brownie stmichel",        "carbs": 20, "category": "cake" },
+  { "id": "reese",    "name": "Reeses (2)",                "carbs": 24, "category": "cake" }
+{ "id": "pickup",    "name": "Pickup",                       "carbs": 16, "category": "cake" }
+  { "id": "barre",      "name": "Barre de céréales",         "carbs": 18, "category": "cake" },
   { "id": "bready",     "name": "Nutella Bready",          "carbs": 25, "category": "cake" },
   { "id": "banane",     "name": "Banane",                  "carbs": 20, "category": "solid" },
   { "id": "patefruits", "name": "Pâte de fruits",          "carbs": 25, "category": "solid" },
