@@ -8,5 +8,7 @@
   { "id": "gateau2",     "name": "Gâteau sport",         "sugar": 10 },
   { "id": "bready",     "name": "Nutella Bready",         "sugar": 10 },
   { "id": "iso",        "name": "Boisson sucrée (500 ml)", "sugar": 30 },
-  { "id": "compote",    "name": "Compote (gourde)",     "sugar": 15 },
+  { "id": "compote",    "name": "Compote (gourde)",     "sugar": 46 },
+  { "id": "maison1",    "name": "Compote maison banane",     "sugar": 30 },
+  { "id": "maison2",    "name": "Compote maison patate",     "sugar": 20 },
 ]
