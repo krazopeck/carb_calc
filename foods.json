@@ -7,7 +7,7 @@
   { "id": "gateau",     "name": "Gâteau sport",         "sugar": 10 },
   { "id": "gateau2",     "name": "Gâteau sport",         "sugar": 10 },
   { "id": "bready",     "name": "Nutella B-ready",         "sugar": 10 },
-  { "id": "compote",    "name": "Compote (gourde)",     "sugar": 46 },
+  { "id": "compote",    "name": "Compote (gourde)",     "sugar": 52},
   { "id": "maison1",    "name": "Compote maison banane",     "sugar": 30 },
   { "id": "maison2",    "name": "Compote maison patate",     "sugar": 20 }
 ]
