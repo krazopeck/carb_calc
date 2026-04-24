@@ -522,6 +522,14 @@
     to { opacity: 1; transform: translateY(0); }
   }
   .row.new { animation: slideIn 0.25s ease; }
+
+  .empty-state {
+    padding: 24px 16px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 15px;
+    letter-spacing: -0.24px;
+  }
 </style>
 </head>
 <body>
@@ -623,10 +631,13 @@
 
   function save() {
     try {
+      // On ne sauvegarde QUE les aliments custom (pas les presets).
+      // Les presets sont toujours rechargés depuis foods.json.
+      const customFoods = state.foods.filter(f => !f.preset);
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         duration: state.duration,
         target: state.target,
-        foods: state.foods,
+        customFoods: customFoods,
         bag: state.bag
       }));
     } catch(e) {}
@@ -639,8 +650,18 @@
       const p = JSON.parse(raw);
       if (typeof p.duration === 'number') state.duration = p.duration;
       if (typeof p.target === 'number') state.target = p.target;
-      if (Array.isArray(p.foods)) state.foods = p.foods;
       if (p.bag && typeof p.bag === 'object') state.bag = p.bag;
+
+      // Aliments custom : on les ajoute aux presets déjà chargés
+      let customs = [];
+      if (Array.isArray(p.customFoods)) {
+        // Nouveau format
+        customs = p.customFoods.map(f => ({ ...f, preset: false }));
+      } else if (Array.isArray(p.foods)) {
+        // Ancien format (rétro-compat) : on extrait uniquement les non-presets
+        customs = p.foods.filter(f => f && !f.preset);
+      }
+      state.foods = state.foods.concat(customs);
     } catch(e) {}
   }
 
@@ -654,6 +675,11 @@
   function renderFoods() {
     const container = document.getElementById('foods-list');
     container.innerHTML = '';
+
+    if (state.foods.length === 0) {
+      container.innerHTML = '<div class="empty-state">Liste introuvable. Vérifie que <code>foods.json</code> est bien présent.</div>';
+      return;
+    }
 
     state.foods.forEach(food => {
       const qty = state.bag[food.id] || 0;
