@@ -202,6 +202,81 @@
     letter-spacing: -0.24px;
   }
 
+  /* Slider row (iOS-style) */
+  .slider-row {
+    display: block;
+    padding: 11px 16px 14px;
+    position: relative;
+  }
+  .slider-row:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    right: 0;
+    height: 0.5px;
+    background: var(--separator);
+  }
+  .slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .slider-value {
+    font-size: 17px;
+    color: var(--ios-blue);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    letter-spacing: -0.43px;
+  }
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    margin: 4px 0;
+    background: linear-gradient(
+      to right,
+      var(--ios-blue) 0%,
+      var(--ios-blue) var(--fill, 0%),
+      var(--fill-tertiary) var(--fill, 0%),
+      var(--fill-tertiary) 100%
+    );
+  }
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.18), 0 1px 1px rgba(0,0,0,0.1);
+    border: none;
+    cursor: grab;
+    transition: transform 0.12s ease;
+  }
+  .slider::-webkit-slider-thumb:active {
+    transform: scale(1.15);
+    cursor: grabbing;
+  }
+  .slider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.18), 0 1px 1px rgba(0,0,0,0.1);
+    border: none;
+    cursor: grab;
+    transition: transform 0.12s ease;
+  }
+  .slider::-moz-range-thumb:active {
+    transform: scale(1.15);
+  }
+
   /* Stepper iOS */
   .stepper {
     display: inline-flex;
@@ -458,19 +533,19 @@
   <section class="section">
     <h2 class="section-header">Paramètres de la sortie</h2>
     <div class="card">
-      <div class="row">
-        <div class="row-main"><span class="row-label">Durée</span></div>
-        <div class="input-wrap">
-          <input type="number" id="input-duration" class="input-field" min="0" step="0.5" value="3" inputmode="decimal">
-          <span class="unit">h</span>
+      <div class="slider-row">
+        <div class="slider-header">
+          <span class="row-label">Durée</span>
+          <span class="slider-value" id="duration-value">3 h</span>
         </div>
+        <input type="range" id="input-duration" class="slider" min="0.5" max="12" step="0.5" value="3">
       </div>
-      <div class="row">
-        <div class="row-main"><span class="row-label">Objectif glucides</span></div>
-        <div class="input-wrap">
-          <input type="number" id="input-target" class="input-field" min="0" step="5" value="50" inputmode="numeric">
-          <span class="unit">g/h</span>
+      <div class="slider-row">
+        <div class="slider-header">
+          <span class="row-label">Objectif glucides</span>
+          <span class="slider-value" id="target-value">60 g/h</span>
         </div>
+        <input type="range" id="input-target" class="slider" min="20" max="120" step="5" value="60">
       </div>
       <div class="row strong">
         <div class="row-main"><span class="row-label">Besoin total</span></div>
@@ -514,15 +589,14 @@
 <script>
   // --- Aliments par défaut (valeurs indicatives de glucides) ---
   const DEFAULT_FOODS = [
-    { id: 'iso',        name: 'Boisson iso (500 ml)', sugar: 30, preset: true },
     { id: 'gel',        name: 'Gel énergétique',     sugar: 25, preset: true },
     { id: 'banane',     name: 'Banane',              sugar: 20, preset: true },
     { id: 'barre',      name: 'Barre de céréales',   sugar: 18, preset: true },
     { id: 'patefruits', name: 'Pâte de fruits',      sugar: 25, preset: true },
-    { id: 'gateau1',     name: 'St-michel rond',        sugar: 10, preset: true },
-    { id: 'gateau2',     name: 'Brownie rond',        sugar: 10, preset: true },
-    { id: 'bready',     name: 'Nutella B-ready',        sugar: 10, preset: true },
+    { id: 'gateau',     name: 'Gâteau sport',        sugar: 10, preset: true },
+    { id: 'iso',        name: 'Boisson iso (500 ml)', sugar: 30, preset: true },
     { id: 'compote',    name: 'Compote (gourde)',    sugar: 15, preset: true },
+    { id: 'datte',      name: 'Datte',               sugar: 6,  preset: true },
   ];
 
   const STORAGE_KEY = 'nutrition-course-v1';
@@ -716,18 +790,51 @@
   // --- Init ---
   function init() {
     load();
-    document.getElementById('input-duration').value = state.duration;
-    document.getElementById('input-target').value = state.target;
 
-    document.getElementById('input-duration').addEventListener('input', (e) => {
-      state.duration = Math.max(0, Number(e.target.value) || 0);
-      renderTotals(); save();
+    const durationSlider = document.getElementById('input-duration');
+    const targetSlider = document.getElementById('input-target');
+    const durationLabel = document.getElementById('duration-value');
+    const targetLabel = document.getElementById('target-value');
+
+    // Applique state → sliders, puis relit la valeur "clampée" par le navigateur
+    durationSlider.value = state.duration;
+    state.duration = Number(durationSlider.value);
+    targetSlider.value = state.target;
+    state.target = Number(targetSlider.value);
+
+    function updateFill(slider) {
+      const min = Number(slider.min);
+      const max = Number(slider.max);
+      const val = Number(slider.value);
+      const pct = ((val - min) / (max - min)) * 100;
+      slider.style.setProperty('--fill', pct + '%');
+    }
+
+    function refreshDuration() {
+      durationLabel.textContent = fmt(state.duration) + ' h';
+      updateFill(durationSlider);
+    }
+    function refreshTarget() {
+      targetLabel.textContent = fmt(state.target) + ' g/h';
+      updateFill(targetSlider);
+    }
+
+    durationSlider.addEventListener('input', (e) => {
+      state.duration = Number(e.target.value);
+      refreshDuration();
+      renderTotals();
+      save();
     });
 
-    document.getElementById('input-target').addEventListener('input', (e) => {
-      state.target = Math.max(0, Number(e.target.value) || 0);
-      renderTotals(); save();
+    targetSlider.addEventListener('input', (e) => {
+      state.target = Number(e.target.value);
+      refreshTarget();
+      renderTotals();
+      save();
     });
+
+    refreshDuration();
+    refreshTarget();
 
     document.getElementById('add-food-form').addEventListener('submit', (e) => {
       e.preventDefault();
