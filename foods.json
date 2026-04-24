@@ -1,10 +1,12 @@
 [
+  { "id": "iso",        "name": "Boisson sucrée (500 ml)", "sugar": 30 },
   { "id": "gel",        "name": "Gel énergétique",      "sugar": 25 },
   { "id": "banane",     "name": "Banane",               "sugar": 20 },
   { "id": "barre",      "name": "Barre de céréales",    "sugar": 18 },
   { "id": "patefruits", "name": "Pâte de fruits",       "sugar": 25 },
   { "id": "gateau",     "name": "Gâteau sport",         "sugar": 10 },
-  { "id": "iso",        "name": "Boisson iso (500 ml)", "sugar": 30 },
+  { "id": "gateau2",     "name": "Gâteau sport",         "sugar": 10 },
+  { "id": "bready",     "name": "Nutella Bready",         "sugar": 10 },
+  { "id": "iso",        "name": "Boisson sucrée (500 ml)", "sugar": 30 },
   { "id": "compote",    "name": "Compote (gourde)",     "sugar": 15 },
-  { "id": "datte",      "name": "Datte",                "sugar": 6  }
 ]
