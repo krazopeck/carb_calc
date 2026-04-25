@@ -16,6 +16,7 @@
   { "id": "reese",      "name": "Reeses (2 cups)",                "carbs": 29, "category": "cake" },
   { "id": "pickup",     "name": "Pickup",                       "carbs": 17, "category": "cake" },
   { "id": "barre",      "name": "Barre de céréales",         "carbs": 15, "category": "cake" },
+    { "id": "barre",      "name": "Nakd",         "carbs": 20, "category": "cake" },
   { "id": "bready",     "name": "Nutella Bready",          "carbs": 25, "category": "cake" },
   { "id": "banane",     "name": "Banane",                  "carbs": 20, "category": "solid" },
   { "id": "patefruits", "name": "Pâte de fruits",          "carbs": 25, "category": "solid" },
