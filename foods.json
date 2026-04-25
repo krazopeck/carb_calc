@@ -7,6 +7,7 @@
   { "id": "gele",        "name": "Gel energetico",         "carbs": 56, "category": "gel" },
   { "id": "compote",    "name": "Compote (gourde)",        "carbs": 46, "category": "gel" },
   { "id": "gateau",     "name": "Gâteau stmichel",         "carbs": 11, "category": "cake" },
+{ "id": "rouleF",     "name": "Roulé fraise",         "carbs": 16, "category": "cake" },
   { "id": "gateau2",    "name": "Brownie stmichel",        "carbs": 20, "category": "cake" },
   { "id": "reese",      "name": "Reeses (2 cups)",                "carbs": 29, "category": "cake" },
   { "id": "pickup",     "name": "Pickup",                       "carbs": 17, "category": "cake" },
