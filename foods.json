@@ -19,7 +19,7 @@
     { "id": "nakd",      "name": "Nakd",         "carbs": 20, "category": "cake" },
   { "id": "bready",     "name": "Nutella Bready",          "carbs": 25, "category": "cake" },
   { "id": "banane",     "name": "Banane",                  "carbs": 20, "category": "solid" },
-  { "id": "patefruits", "name": "Pâte de fruits",          "carbs": 25, "category": "solid" },
+  { "id": "patefruits", "name": "Pâte de fruits (x3)",          "carbs": 25, "category": "solid" },
   { "id": "maison1",    "name": "Compote maison banane",   "carbs": 30, "category": "homemade" },
   { "id": "maison2",    "name": "Compote maison patate",   "carbs": 20, "category": "homemade" }
 ]
