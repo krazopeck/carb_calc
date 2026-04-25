@@ -21,5 +21,9 @@
   { "id": "banane",     "name": "Banane",                  "carbs": 20, "category": "solid" },
   { "id": "patefruits", "name": "Pâte de fruits (x3)",          "carbs": 25, "category": "solid" },
   { "id": "maison1",    "name": "Compote maison banane",   "carbs": 30, "category": "homemade" },
-  { "id": "maison2",    "name": "Compote maison patate",   "carbs": 20, "category": "homemade" }
+  { "id": "maison2",    "name": "Compote maison patate",   "carbs": 20, "category": "homemade" },
+  { "id": "choco",      "name": "Carré chocolat noir 65%",  "carbs": 1.7, "category": "solid" },
+{ "id": "orange",     "name": "Quart d'orange",           "carbs": 7,   "category": "solid" },
+{ "id": "quatrequarts", "name": "Part de quatre-quarts",  "carbs": 30,  "category": "cake" }
+
 ]
