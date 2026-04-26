@@ -15,8 +15,6 @@
 <link rel="icon" href="icon.svg">
 <title>Nutrition</title>
 
-<!-- Détection mode sombre fiable (plus robuste que prefers-color-scheme seul en PWA iOS) -->
-
 <script>
   (function() {
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -64,11 +62,7 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
-
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   html, body { overscroll-behavior-y: contain; }
 
   body {
@@ -197,7 +191,7 @@
     letter-spacing: -0.24px;
   }
 
-  /* Slider row (iOS-style) */
+  /* Slider row */
   .slider-row {
     display: block;
     padding: 11px 16px 14px;
@@ -263,10 +257,7 @@
     margin-top: -12px;
     transition: transform 0.12s ease;
   }
-  .slider::-webkit-slider-thumb:active {
-    transform: scale(1.15);
-    cursor: grabbing;
-  }
+  .slider::-webkit-slider-thumb:active { transform: scale(1.15); cursor: grabbing; }
   .slider::-moz-range-thumb {
     width: 28px;
     height: 28px;
@@ -277,11 +268,9 @@
     cursor: grab;
     transition: transform 0.12s ease;
   }
-  .slider::-moz-range-thumb:active {
-    transform: scale(1.15);
-  }
+  .slider::-moz-range-thumb:active { transform: scale(1.15); }
 
-  /* Stepper iOS */
+  /* Stepper */
   .stepper {
     display: inline-flex;
     align-items: center;
@@ -307,7 +296,6 @@
     font-family: inherit;
     padding: 0;
   }
-
   .stepper-btn:active { background: rgba(0,0,0,0.1); }
 
   .stepper-count {
@@ -340,11 +328,7 @@
     padding: 0;
     transition: transform 0.12s ease, opacity 0.12s ease;
   }
-
-  .add-btn-circle:active {
-    transform: scale(0.9);
-    opacity: 0.8;
-  }
+  .add-btn-circle:active { transform: scale(0.9); opacity: 0.8; }
 
   /* Add food form */
   .add-food-form {
@@ -368,12 +352,8 @@
     -webkit-appearance: none;
     letter-spacing: -0.24px;
   }
-
   .text-input::placeholder { color: var(--text-tertiary); }
-
-  .text-input:focus {
-    box-shadow: inset 0 0 0 1.5px var(--ios-blue);
-  }
+  .text-input:focus { box-shadow: inset 0 0 0 1.5px var(--ios-blue); }
 
   .text-input.sugar-input {
     flex: 0 0 54px;
@@ -401,7 +381,7 @@
   .submit-btn:active { opacity: 0.7; }
   .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-  /* Delete button for custom items */
+  /* Delete button */
   .delete-btn {
     width: 22px;
     height: 22px;
@@ -421,7 +401,6 @@
   }
   .delete-btn:active { transform: scale(0.85); }
   .row.delete-mode .delete-btn { display: flex; }
-
   .delete-btn::before {
     content: '';
     width: 10px;
@@ -457,7 +436,30 @@
   }
   .edit-btn:active { opacity: 0.5; }
 
-  /* Segmented control iOS (scrollable horizontale) */
+  /* Share button */
+  .share-btn {
+    background: transparent;
+    border: none;
+    color: var(--ios-blue);
+    font-size: 17px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0 4px;
+    letter-spacing: -0.43px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .share-btn:active { opacity: 0.5; }
+
+  /* Header right group */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* Tab bar */
   .tab-bar {
     display: flex;
     gap: 6px;
@@ -501,9 +503,7 @@
     box-shadow: 0 3px 8px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
     font-weight: 600;
   }
-  html.dark .tab.active {
-    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-  }
+  html.dark .tab.active { box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
 
   .tab-count {
     display: inline-block;
@@ -520,7 +520,7 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* Status bar (sticky at bottom) */
+  /* Status bar */
   .status-bar {
     position: fixed;
     bottom: 0;
@@ -533,10 +533,7 @@
     padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
     z-index: 100;
   }
-
-  html.dark .status-bar {
-    background: rgba(0, 0, 0, 0.78);
-  }
+  html.dark .status-bar { background: rgba(0, 0, 0, 0.78); }
 
   .status-row {
     display: flex;
@@ -562,10 +559,7 @@
     letter-spacing: -0.24px;
     white-space: nowrap;
   }
-  .status-numbers strong {
-    color: var(--text);
-    font-weight: 600;
-  }
+  .status-numbers strong { color: var(--text); font-weight: 600; }
 
   .progress-track {
     height: 6px;
@@ -574,9 +568,7 @@
     overflow: hidden;
     position: relative;
   }
-  html.dark .progress-track {
-    background: rgba(255, 255, 255, 0.15);
-  }
+  html.dark .progress-track { background: rgba(255, 255, 255, 0.15); }
 
   .progress-fill {
     height: 100%;
@@ -600,6 +592,30 @@
     font-size: 15px;
     letter-spacing: -0.24px;
   }
+
+  /* Toast notification */
+  .toast {
+    position: fixed;
+    bottom: calc(90px + env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(50, 50, 55, 0.92);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 20px;
+    z-index: 200;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -0.24px;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 </style>
 
 </head>
@@ -607,17 +623,15 @@
 
 <div class="app">
 
-<header class="header" style="display:flex; align-items:flex-end; justify-content:space-between;">
-  <div>
-    <h1 class="large-title">Nutrition</h1>
-    <p class="subtitle">Prépare ton ravitaillement de course</p>
-  </div>
-  <button onclick="window.location.reload()" style="background:var(--fill-tertiary); border:none; width:36px; height:36px; border-radius:50%; color:var(--ios-blue); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; margin-bottom:6px;" aria-label="Recharger">↻</button>
-</header>
-
+  <header class="header" style="display:flex; align-items:flex-end; justify-content:space-between;">
+    <div>
+      <h1 class="large-title">Nutrition</h1>
+      <p class="subtitle">Prépare ton ravitaillement de course</p>
+    </div>
+    <button onclick="window.location.reload()" style="background:var(--fill-tertiary); border:none; width:36px; height:36px; border-radius:50%; color:var(--ios-blue); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; margin-bottom:6px;" aria-label="Recharger">↻</button>
+  </header>
 
   <!-- Paramètres -->
-
   <section class="section">
     <h2 class="section-header">Paramètres de la sortie</h2>
     <div class="card">
@@ -644,32 +658,37 @@
   </section>
 
   <!-- Aliments -->
-
   <section class="section">
     <div class="section-header-row">
       <h2 class="section-header">Aliments</h2>
-      <button class="edit-btn" id="edit-btn">Modifier</button>
+      <div class="header-actions">
+        <button class="share-btn" id="share-btn" aria-label="Exporter le plan">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+          Exporter
+        </button>
+        <button class="edit-btn" id="edit-btn">Modifier</button>
+      </div>
     </div>
     <div class="tab-bar" id="tab-bar"></div>
     <div class="card" id="foods-list"></div>
 
-
-<div class="card" style="margin-top:8px">
-  <form class="add-food-form" id="add-food-form">
-    <input type="text" id="new-food-name" class="text-input" placeholder="Nouvel aliment" required maxlength="30">
-    <input type="number" id="new-food-sugar" class="text-input sugar-input" placeholder="g" min="0" step="0.5" required inputmode="decimal">
-    <button type="submit" class="submit-btn">Ajouter</button>
-  </form>
-</div>
-<p class="section-footer">Appuie sur + pour ajouter au sac. "Modifier" pour supprimer tes aliments custom.</p>
-
-
+    <div class="card" style="margin-top:8px">
+      <form class="add-food-form" id="add-food-form">
+        <input type="text" id="new-food-name" class="text-input" placeholder="Nouvel aliment" required maxlength="30">
+        <input type="number" id="new-food-sugar" class="text-input sugar-input" placeholder="g" min="0" step="0.5" required inputmode="decimal">
+        <button type="submit" class="submit-btn">Ajouter</button>
+      </form>
+    </div>
+    <p class="section-footer">Appuie sur + pour ajouter au sac. "Modifier" pour supprimer tes aliments custom.</p>
   </section>
 
 </div>
 
-<!-- Status bar fixe en bas -->
-
+<!-- Status bar -->
 <div class="status-bar">
   <div class="status-row">
     <span class="status-text neutral" id="status-text">Commence à remplir ton sac</span>
@@ -680,8 +699,10 @@
   </div>
 </div>
 
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
 <script>
-  // --- État et chargement des aliments par défaut ---
   const STORAGE_KEY = 'carb_calc-v1';
   const FOODS_URL = 'foods.json';
 
@@ -720,7 +741,7 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         duration: state.duration,
         target: state.target,
-        customFoods: customFoods,
+        customFoods,
         bag: state.bag,
         activeTab: state.activeTab
       }));
@@ -743,23 +764,144 @@
       } else if (Array.isArray(p.foods)) {
         customs = p.foods.filter(f => f && !f.preset);
       }
-      // Migration : ancien champ "sugar" → nouveau champ "carbs"
       customs = customs.map(f => {
-        if (f.carbs === undefined && f.sugar !== undefined) {
-          return { ...f, carbs: f.sugar };
-        }
+        if (f.carbs === undefined && f.sugar !== undefined) return { ...f, carbs: f.sugar };
         return f;
       });
       state.foods = state.foods.concat(customs);
     } catch(e) {}
   }
 
-  // --- Computed ---
   const totalNeeded = () => Math.max(0, state.duration) * Math.max(0, state.target);
-  const totalInBag = () => state.foods.reduce((s, f) => s + (state.bag[f.id] || 0) * f.carbs, 0);
-  const foodsInBag = () => state.foods.filter(f => (state.bag[f.id] || 0) > 0);
+  const totalInBag  = () => state.foods.reduce((s, f) => s + (state.bag[f.id] || 0) * f.carbs, 0);
+  const foodsInBag  = () => state.foods.filter(f => (state.bag[f.id] || 0) > 0);
 
   function fmt(n) { return (Math.round(n * 10) / 10).toString(); }
+
+  // --- Toast ---
+  let toastTimer = null;
+  function showToast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 2500);
+  }
+
+  // --- Export plan ---
+  function generatePlan() {
+    const bag = state.foods
+      .filter(f => (state.bag[f.id] || 0) > 0)
+      .map(f => ({ ...f, qty: state.bag[f.id] }));
+
+    if (!bag.length) {
+      showToast('Ton sac est vide !');
+      return;
+    }
+
+    const duration = state.duration;
+    const target   = state.target;
+
+    const liquids = bag.filter(f => f.category === 'liquid');
+    const solids  = bag.filter(f => f.category !== 'liquid');
+
+    const totalLiquid        = liquids.reduce((s, f) => s + f.qty * f.carbs, 0);
+    const carbsLiquidPerHour = totalLiquid / duration;
+
+    // Étaler les solides un par un dans le temps
+    const solidItems = [];
+    solids.forEach(f => {
+      for (let i = 0; i < f.qty; i++) solidItems.push(f);
+    });
+
+    // Distribuer équitablement par heure (round-robin)
+    const hoursArr = Array.from({ length: Math.ceil(duration) }, (_, i) => ({ h: i + 1, items: [] }));
+    solidItems.forEach((item, idx) => {
+      hoursArr[idx % hoursArr.length].items.push(item);
+    });
+
+    const totalBag  = bag.reduce((s, f) => s + f.qty * f.carbs, 0);
+    const needed    = duration * target;
+    const diff      = totalBag - needed;
+
+    // Construction du texte
+    const pad = (str, len) => str.length >= len ? str : str + ' '.repeat(len - str.length);
+
+    let txt = '================================================\n';
+    txt += '   PLAN DE RAVITAILLEMENT\n';
+    txt += '================================================\n';
+    txt += `Durée       : ${fmt(duration)} h\n`;
+    txt += `Objectif    : ${fmt(target)} g/h\n`;
+    txt += `Besoin total: ${fmt(needed)} g\n`;
+    txt += `Dans le sac : ${fmt(totalBag)} g`;
+    if (diff >= 0.5) txt += `  (+${fmt(diff)} g de marge)`;
+    else if (diff < -0.4) txt += `  (manque ${fmt(Math.abs(diff))} g)`;
+    txt += '\n';
+
+    if (liquids.length) {
+      txt += '\n── Boissons (réparties sur tout l\'effort) ──\n';
+      liquids.forEach(f => {
+        txt += `  ${pad(f.name, 24)}: ${f.qty}x  →  ${fmt(f.qty * f.carbs)} g total\n`;
+      });
+      txt += `  Soit ~${fmt(carbsLiquidPerHour)} g/h de glucides liquides\n`;
+    }
+
+    txt += '\n================================================\n';
+
+    hoursArr.forEach(({ h, items }) => {
+      const isLastHour = h === hoursArr.length && !Number.isInteger(duration);
+      const hourLabel  = isLastHour ? `Heure ${h}  (~${fmt((duration % 1) * 60)} min)` : `Heure ${h}`;
+      txt += `\n  ${hourLabel}\n`;
+      txt += '  --------------------------------\n';
+
+      const liqCarbs = Math.round(carbsLiquidPerHour);
+      if (liquids.length) {
+        txt += `  ${pad('Boisson', 24)}: ${liqCarbs} g\n`;
+      }
+
+      const solidCarbs = items.reduce((s, f) => s + f.carbs, 0);
+      if (items.length) {
+        items.forEach(f => {
+          txt += `  ${pad(f.name, 24)}: ${fmt(f.carbs)} g\n`;
+        });
+      } else {
+        txt += `  (pas de solide cette heure)\n`;
+      }
+
+      const hourTotal = liqCarbs + solidCarbs;
+      txt += `  ${'─'.repeat(32)}\n`;
+      txt += `  ${pad('Total heure', 24)}: ~${hourTotal} g\n`;
+    });
+
+    txt += '\n================================================\n';
+    txt += `Total sac   : ${fmt(totalBag)} g\n`;
+    txt += `Objectif    : ${fmt(needed)} g\n`;
+    if (diff >= 0.5)       txt += `Marge       : +${fmt(diff)} g ✓\n`;
+    else if (diff < -0.4)  txt += `Manque      : ${fmt(Math.abs(diff))} g !\n`;
+    else                   txt += `Objectif atteint ✓\n`;
+    txt += '================================================\n';
+
+    // Téléchargement
+    try {
+      const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = 'ravitaillement.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Plan exporté ✓');
+    } catch(e) {
+      // Fallback : copie dans le presse-papiers
+      navigator.clipboard.writeText(txt).then(() => {
+        showToast('Copié dans le presse-papiers ✓');
+      }).catch(() => {
+        showToast('Export indisponible sur cet appareil');
+      });
+    }
+  }
 
   // --- Rendering ---
   function renderTabs() {
@@ -767,10 +909,7 @@
     bar.innerHTML = '';
 
     const bagCount = foodsInBag().length;
-
-    if (bagCount === 0 && state.activeTab === 'bag') {
-      state.activeTab = 'liquid';
-    }
+    if (bagCount === 0 && state.activeTab === 'bag') state.activeTab = 'liquid';
 
     if (bagCount > 0) {
       const btn = document.createElement('button');
@@ -881,17 +1020,16 @@
 
   function renderTotals() {
     const needed = totalNeeded();
-    const have = totalInBag();
-    const diff = have - needed;
+    const have   = totalInBag();
+    const diff   = have - needed;
 
-    document.getElementById('total-needed').textContent = `${fmt(needed)} g`;
+    document.getElementById('total-needed').textContent   = `${fmt(needed)} g`;
     document.getElementById('status-current').textContent = fmt(have);
-    document.getElementById('status-total').textContent = fmt(needed);
+    document.getElementById('status-total').textContent   = fmt(needed);
 
     const statusText = document.getElementById('status-text');
-    const fill = document.getElementById('progress-fill');
-
-    const pct = needed > 0 ? Math.min(100, (have / needed) * 100) : 0;
+    const fill       = document.getElementById('progress-fill');
+    const pct        = needed > 0 ? Math.min(100, (have / needed) * 100) : 0;
     fill.style.width = pct + '%';
 
     statusText.classList.remove('ok', 'low', 'neutral');
@@ -935,7 +1073,7 @@
   }
 
   function addCustomFood(name, carbs) {
-    const id = 'custom-' + Date.now();
+    const id       = 'custom-' + Date.now();
     const category = (state.activeTab === 'bag') ? 'homemade' : state.activeTab;
     state.foods.push({ id, name: name.trim(), carbs: Number(carbs), category, preset: false });
     state.activeTab = category;
@@ -962,31 +1100,24 @@
     load();
 
     const durationSlider = document.getElementById('input-duration');
-    const targetSlider = document.getElementById('input-target');
-    const durationLabel = document.getElementById('duration-value');
-    const targetLabel = document.getElementById('target-value');
+    const targetSlider   = document.getElementById('input-target');
+    const durationLabel  = document.getElementById('duration-value');
+    const targetLabel    = document.getElementById('target-value');
 
     durationSlider.value = state.duration;
-    state.duration = Number(durationSlider.value);
-    targetSlider.value = state.target;
-    state.target = Number(targetSlider.value);
+    state.duration       = Number(durationSlider.value);
+    targetSlider.value   = state.target;
+    state.target         = Number(targetSlider.value);
 
     function updateFill(slider) {
       const min = Number(slider.min);
       const max = Number(slider.max);
       const val = Number(slider.value);
-      const pct = ((val - min) / (max - min)) * 100;
-      slider.style.setProperty('--fill', pct + '%');
+      slider.style.setProperty('--fill', ((val - min) / (max - min)) * 100 + '%');
     }
 
-    function refreshDuration() {
-      durationLabel.textContent = fmt(state.duration) + ' h';
-      updateFill(durationSlider);
-    }
-    function refreshTarget() {
-      targetLabel.textContent = fmt(state.target) + ' g/h';
-      updateFill(targetSlider);
-    }
+    function refreshDuration() { durationLabel.textContent = fmt(state.duration) + ' h'; updateFill(durationSlider); }
+    function refreshTarget()   { targetLabel.textContent   = fmt(state.target) + ' g/h'; updateFill(targetSlider); }
 
     durationSlider.addEventListener('input', (e) => {
       state.duration = Number(e.target.value);
@@ -1007,18 +1138,19 @@
 
     document.getElementById('add-food-form').addEventListener('submit', (e) => {
       e.preventDefault();
-      const nameEl = document.getElementById('new-food-name');
+      const nameEl  = document.getElementById('new-food-name');
       const sugarEl = document.getElementById('new-food-sugar');
-      const name = nameEl.value.trim();
-      const carbs = Number(sugarEl.value);
+      const name    = nameEl.value.trim();
+      const carbs   = Number(sugarEl.value);
       if (!name || !(carbs >= 0)) return;
       addCustomFood(name, carbs);
-      nameEl.value = '';
+      nameEl.value  = '';
       sugarEl.value = '';
       nameEl.focus();
     });
 
     document.getElementById('edit-btn').addEventListener('click', toggleEdit);
+    document.getElementById('share-btn').addEventListener('click', generatePlan);
 
     render();
   }
