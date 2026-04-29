@@ -8,7 +8,7 @@
   { "id": "miel3",       "name": "Boisson miel (30g)",    "carbs": 22.5, "category": "liquid" },
   { "id": "miel4",       "name": "Boisson miel (40g)",      "carbs": 30, "category": "liquid" },
   { "id": "gelo",        "name": "Gel overstim",           "carbs": 26, "category": "gel" },
-  { "id": "gele",        "name": "Gel energetico",         "carbs": 56, "category": "gel" },
+  { "id": "gele",        "name": "Gel energetico",         "carbs": 18, "category": "gel" },
   { "id": "compote",    "name": "Compote (gourde)",        "carbs": 46, "category": "gel" },
   { "id": "gateau",     "name": "Gâteau stmichel",         "carbs": 11, "category": "cake" },
   { "id": "rouleF",     "name": "Roulé fraise",         "carbs": 16, "category": "cake" },
