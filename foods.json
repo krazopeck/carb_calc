@@ -1,5 +1,6 @@
 [
-  { "id": "iso",         "name": "Boisson sucrée (10g)",      "carbs": 10, "category": "liquid" },
+  { "id": "iso0",         "name": "Boisson iso (500 mL)",      "carbs": 33, "category": "liquid" },
+  { "id": "iso1",         "name": "Boisson sucrée (10g)",      "carbs": 10, "category": "liquid" },
   { "id": "iso2",        "name": "Boisson sucrée (20g)",      "carbs": 20, "category": "liquid" },
   { "id": "iso3",        "name": "Boisson sucrée (30g)",    "carbs": 30, "category": "liquid" },
   { "id": "iso4",        "name": "Boisson sucrée (40g)",      "carbs": 40, "category": "liquid" },
